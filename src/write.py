@@ -21,6 +21,7 @@ Flags:
     -nogreen: The G channel in RGB will remain untouched.
     -noblue: The B channel in RGB will remain untouched.
     -n: The number of LSB the message will be written on.
+    -fromfile: Uses text from a file.
 
 Example:
     python ./write.py <imagePath.png> <outputPath.png> | -flags
@@ -173,7 +174,7 @@ if __name__ == "__main__":
         printDoc()
     
     # Flags
-    gray, nored, nogreen, noblue = False, False, False, False
+    gray, nored, nogreen, noblue, fromfile = False, False, False, False, False
     lsb = 1
 
     # Update flags
@@ -186,6 +187,13 @@ if __name__ == "__main__":
             nogreen = True
         if "-noblue" in args:
             noblue = True
+        if "-fromfile" in args:
+            try:
+                message = open(args[args.index("-fromfile") + 1],'r').read()
+                fromfile = True
+            except FileNotFoundError:
+                print("The -fromfile flag needs to be followed by a valid text file path.\n")
+                exit(1)
         if "-n" in args:
             try:
                 lsb = int(args[args.index("-n") + 1])
@@ -208,12 +216,12 @@ if __name__ == "__main__":
     inputFile = args[0]
     outputFile = args[1]
 
-    if not (inputFile[-4:] in inputFormats):
+    if not len([x for x in inputFormats if x in inputFile]):
         print("The format of the input file is not supported.")
         print("Please use .jpg, .png, .jpeg, .tiff, .bmp files as input.")
         exit(1)
 
-    if not (outputFile[-4:] in outputFormats):
+    if not len([x for x in outputFormats if x in outputFile]):
         print("The format of the output file is not supported.")
         print("Please use .png, .tiff, .bmp files as output.")
         exit(1)
@@ -227,7 +235,12 @@ if __name__ == "__main__":
     nchars = int(np.floor(bits*lsb/8))
     
     # Get the user message
-    message = getMessage(nchars)
+    if fromfile:
+        print("The message to write is read from an external text file.")
+        if len(message) > nchars:
+            message = message[:nchars] # Crop to max length
+    else:
+        message = getMessage(nchars)
     binMessage = toBinary(message)
 
     # Write the message to a new image

@@ -31,7 +31,7 @@ def toAlnum(message):
     """Converts a binary string to ASCII compliant text."""
 
     # Output alphabetical string
-    output = ""
+    output = ''
 
     # Split the message in bytes to convert each char later on
     bytes = [[]]
@@ -43,9 +43,9 @@ def toAlnum(message):
 
     # Convert each byte to ASCII code
     for byte_ in bytes:
-        output += chr(int("".join(byte_), 2))
-        
-    return output
+        output += chr(int(''.join(byte_), 2))
+    
+    return ''.join(char if ord(char) < 128 else ' ' for char in output)
 
 def getImage(filePath):
     """Imports and converts an image file to a numpy array."""

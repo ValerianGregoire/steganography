@@ -38,10 +38,12 @@ The app GUI is the following
 
 ### Write tab
 ![WriteTab](./Documents/images/write_tab.png?raw=true "WriteTab")
+
 This tab allows the user to hide a message in an image. The image is then written to the user's Desktop. The user can choose which color channels to use (RGB), or to output a greyscale image. The number of LSB to write on can also be chosen to hide more data in less space, at the expanse of further image quality degradation. It is recommended to write on the last or last two bytes of each pixel at most to keep sufficient image quality.
 
 ### Read tab
 ![ReadTab](./Documents/images/read_tab.png?raw=true "ReadTab")
+
 This tab allows the user to retrieve a hidden message from an image. The user can choose which color channels to use (RGB) for reading. Greyscale images are automatically recognized, and do not require any tuning apart from the choice of LSB to read the message on.
 
 ## Example
@@ -69,4 +71,4 @@ This project successfully demonstrated the implementation of an image steganogra
 
 The results were conclusive, as the software effectively encoded and decoded messages without altering the apparent quality of the carrier images. The flexibility provided by allowing users to choose the number of LSBs and color channels for both writing and reading further enhances the program's utility. The side-by-side comparison of the original and encoded images confirmed that the modifications remained undetectable to the human eye.
 
-Beyond the practical implementation, the project serves as a solid foundation for understanding control theory concepts like bitwise operations, binary data handling, and algorithm design. The detailed explanation of each step — from binary conversion to pixel manipulation — ensures that future engineers can build upon this work, fostering deeper exploration into digital image processing and secure data embedding.
+Beyond the practical implementation, the project serves as a solid foundation for understanding control theory concepts like bitwise operations, binary data handling, and algorithm design. The detailed explanation of each step, from binary conversion to pixel manipulation, ensures that future engineers can build upon this work, fostering deeper exploration into digital image processing and secure data embedding.

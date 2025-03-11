@@ -131,9 +131,9 @@ write_green_var = tk.BooleanVar(value=True)
 write_blue_var = tk.BooleanVar(value=True)
 
 ttk.Checkbutton(write_check_frame, text="Use Grayscale", variable=write_gray_var).pack(side='left', pady=5, padx=5)
-ttk.Checkbutton(write_check_frame, text="Keep Red", variable=write_red_var).pack(side='left', pady=5, padx=5)
-ttk.Checkbutton(write_check_frame, text="Keep Green", variable=write_green_var).pack(side='left', pady=5, padx=5)
-ttk.Checkbutton(write_check_frame, text="Keep Blue", variable=write_blue_var).pack(side='left', pady=5, padx=5)
+ttk.Checkbutton(write_check_frame, text="Use Red", variable=write_red_var).pack(side='left', pady=5, padx=5)
+ttk.Checkbutton(write_check_frame, text="Use Green", variable=write_green_var).pack(side='left', pady=5, padx=5)
+ttk.Checkbutton(write_check_frame, text="Use Blue", variable=write_blue_var).pack(side='left', pady=5, padx=5)
 
 ttk.Button(write_tab, text="Execute", command=write_steganography).pack(pady=10)
 
@@ -167,9 +167,9 @@ read_red_var = tk.BooleanVar(value=True)
 read_green_var = tk.BooleanVar(value=True)
 read_blue_var = tk.BooleanVar(value=True)
 
-ttk.Checkbutton(read_check_frame, text="Keep Red", variable=read_red_var).pack(side='left', pady=5, padx=5)
-ttk.Checkbutton(read_check_frame, text="Keep Green", variable=read_green_var).pack(side='left', pady=5, padx=5)
-ttk.Checkbutton(read_check_frame, text="Keep Blue", variable=read_blue_var).pack(side='left', pady=5, padx=5)
+ttk.Checkbutton(read_check_frame, text="Use Red", variable=read_red_var).pack(side='left', pady=5, padx=5)
+ttk.Checkbutton(read_check_frame, text="Use Green", variable=read_green_var).pack(side='left', pady=5, padx=5)
+ttk.Checkbutton(read_check_frame, text="Use Blue", variable=read_blue_var).pack(side='left', pady=5, padx=5)
 
 read_output_label = ttk.Label(read_tab, text="Extracted Data:")
 read_output_label.pack(pady=5)

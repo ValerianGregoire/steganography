@@ -217,12 +217,12 @@ if __name__ == "__main__":
     outputFile = args[1]
 
     if not len([x for x in inputFormats if x in inputFile]):
-        print("The format of the input file is not supported.")
+        print(f"The format of the input file is not supported. ({inputFile})")
         print("Please use .jpg, .png, .jpeg, .tiff, .bmp files as input.")
         exit(1)
 
     if not len([x for x in outputFormats if x in outputFile]):
-        print("The format of the output file is not supported.")
+        print(f"The format of the output file is not supported. ({outputFile})")
         print("Please use .png, .tiff, .bmp files as output.")
         exit(1)
 

@@ -5,7 +5,7 @@ from tkinter import ttk, filedialog, messagebox
 # Create main application window
 root = tk.Tk()
 root.title("Steganography Tool")
-root.geometry("450x435")
+root.geometry("450x450")
 root.resizable(False, False)
 
 # Function for file selection
@@ -17,7 +17,7 @@ def select_file(entry):
 
 # Function to execute the write program
 def write_steganography():
-    input_file = write_input_entry.get().strip()
+    input_file = "\"" + write_input_entry.get().strip() + "\""
     output_file = os.path.join(os.path.expanduser("~/Desktop"), write_output_entry.get().strip())
     lsb_value = write_lsb_spinbox.get()
     use_gray = write_gray_var.get()
@@ -51,7 +51,7 @@ def write_steganography():
 def read_steganography():
     input_file = read_input_entry.get().strip()
     lsb_value = read_lsb_spinbox.get()
-    max_chars = read_chars_spinbox.get().strip()
+    max_chars = int(read_chars_spinbox.get().strip())
     no_red = not read_red_var.get()
     no_green = not read_green_var.get()
     no_blue = not read_blue_var.get()
@@ -61,7 +61,7 @@ def read_steganography():
         return
 
     output_file = os.path.join(os.path.dirname(input_file), "textOutput.txt")
-    command = f"python ./read.py {input_file} {output_file} -n {lsb_value}"
+    command = f'python ./read.py "{input_file}" "{output_file}" -n {lsb_value}'
     if max_chars:
         command += f" -l {max_chars}"
     if no_red:
@@ -156,10 +156,11 @@ read_lsb_spinbox.set(1)
 read_lsb_spinbox.pack(side='left', padx=5)
 read_chars_label = ttk.Label(read_lsb_frame, text="Max Characters:")
 read_chars_label.pack(side='left', padx=5)
-read_chars_spinbox = ttk.Spinbox(read_lsb_frame, from_=0, to=float('inf'), width=5)
-read_chars_spinbox.set(0)
+read_chars_spinbox = ttk.Spinbox(read_lsb_frame, from_=1, to=float('inf'), width=5)
+read_chars_spinbox.set(1)
 read_chars_spinbox.pack(side='left', padx=5)
 
+ttk.Label(read_tab, text="Grayscale images are automatically detected as such.").pack()
 read_check_frame = ttk.Frame(read_tab)
 read_check_frame.pack(pady=5)
 read_red_var = tk.BooleanVar(value=True)
